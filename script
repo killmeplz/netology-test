@@ -1,0 +1,12 @@
+pipeline {
+ agent any
+ stages {
+  stage('Build GO') {
+   steps {
+    sh 'go build .'
+    sh 'go package .go'
+    sh 'curl -u senibratov:123 http://192.168.122.105:8081/#browse/browse:Raw_Hosted_1 --upload-file work3.go -v'
+   }
+  }
+ }
+}
